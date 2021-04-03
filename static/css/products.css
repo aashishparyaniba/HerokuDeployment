@@ -1,0 +1,22 @@
+.productsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.individualProducts {
+    display: grid;
+    margin: 20px 10px 20px 20px;
+}
+
+.image {
+    width: 200px;
+    height: 300px;
+}
+
+
+
+.individualProducts > .pricePlaces {
+    display: inline-grid;
+    grid-template-columns: 60px 50px 0px;
+    
+}

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.blogHeading, h2, li {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    font-style: italic;
+}
+
+p {
+    font-family: 'Montserrat';
+    font-size: 4vw;
+}
+
+.blogImage {
+    width: 100%;
+}
+
+.firstBook {
+    width: 12vw;
+}
+
+.gridBooks {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: rgb(248, 248, 248);
+    padding: 20px;
+}
+
+.firstBookImg {
+    width: 22vw;
+}
+
+.secondBookImg {
+    width: 25vw;
+}
