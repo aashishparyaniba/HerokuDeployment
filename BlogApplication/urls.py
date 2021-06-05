@@ -8,10 +8,10 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path("", include("Products.urls")),
-    #path("publish", include("Blogging.urls")),
-    path("", include("Blogging.urls")),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
+    path("", include("Products.urls")),
+    path("", include("ShoppingCart.urls")),
+    path("", include("Signupin.urls")),
+    #path("", include("Blogging.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

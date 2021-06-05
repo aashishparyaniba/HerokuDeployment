@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.productImage {
+    width: 700px;
+    height: 500px;
+    padding: 100px 0 0 100px;
+}
+
+.checkoutProduct {
+    display: flex;
+    gap: 50px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.productName {
+    font-size: 30px;
+    font-family: 'Montserrat';
+}
+
+.productPrice {
+    font-size: 20px;
+    font-family: 'Montserrat';
+    font-weight: 900;
+    color: rgb(66, 126, 66);
+}
+
+.stockDetails {
+    font-size: 25px;
+    font-family: 'Montserrat';
+    font-weight: 900;
+    color: rgb(2, 221, 250)
+}
+
+.checkoutButton {
+    font-family: 'Montserrat';
+    border: 1px solid black;
+    padding: 15px 200px 15px 200px; 
+}

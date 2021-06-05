@@ -1,49 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 
-    <script src="https://kit.fontawesome.com/cef4cea69d.js" crossorigin="anonymous"></script>
-
-    <style>
-        .top {
-            display: grid;
-            grid-template-columns: 10vw auto auto 10vw;
-        }
-        .hamburger {
-            margin: 17px 0 0 25px;
-            font-size: 4vw;
-            color: rgb(54, 54, 54);
-        }
-        .heart {
-            margin: 17px 0 0 20px;
-            font-size: 4vw;
-            color: rgb(54, 54, 54);
-        }
-        .profile {
-            margin: 17px 0 0 0;
-            font-size: 4vw;
-            color: rgb(54, 54, 54);
-        }
-        .logo {
-            font-size: 4vw;
-            font-weight: bold;
-            margin-top: 15px;
-            font-family: "Montserrat";
-        }
-        hr {
-            margin-top: 20px;
-        }
-    </style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
 </head>
+
 <body>
-    
-    <!--<div class="navbar">
+
+	<!--<div class="navbar">
         <li>WHAT'S NEW</li>
         <li>WOMEN</li>
         <li>MEN</li>
@@ -52,13 +23,60 @@
     </div>-->
 
 
-    <div class="top">
-        <i class="fas fa-bars hamburger"></i>
-        <i class="far fa-heart heart"></i>
-        <div class="logo">BigBrain Programming</div>
-        <i class="far fa-user profile"></i>
-    </div>
-    <hr>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">BigBrainProgramming</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Store <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+
+
+
+			
+			<ul class="navbar-nav my-2 my-lg-0">
+				
+
+				{% if request.session.customer %}
+				
+					<li class="nav-item">
+						<a class="nav-link" href="orders">Orders <span class="sr-only">(current)</span></a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="/logout"">Logout <span class="sr-only">(current)</span></a>
+					</li>
+
+				{% else %}
+			
+					<li class="nav-item">
+						<a class="nav-link" href="/signup">SignUp <span class="sr-only">(current)</span></a>
+					</li>
+				
+					<li class="nav-item">
+						<a class="nav-link" href="/signin">SignIn <span class="sr-only">(current)</span></a>
+					</li>
+				
+				{% endif %}
+			</ul>
+
+		</div>
+	</nav>
+
+
+
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
 
 
 </body>

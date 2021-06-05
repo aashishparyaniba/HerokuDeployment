@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   <link rel="stylesheet" href="{% static 'css/womenProducts.css' %}">
+
+</head>
+<body>
+    
+    {% load cart %}
+
+    {% include "navbar.html" %}
+
+    <div class="container-fluid mt-3">
+        <div class="row mx-auto">
+            {% for product in womenproducts %}
+                <a href="{% url 'productDetailPage' product.id %}"><div class="card mx-auto mb-3" id="{{ product.id }}" style="width: 18rem;">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text"><b>{{ product.price }}</b></p>
+                    </div></a>
+
+
+
+                    <div class="card-footer p-0">
+                        {% if product|is_in_cart:request.session.cart %}
+                            <div class="row no-gutters">
+                                <form action="#{{product.id}}" class="col-2" method="POST">
+                                    {% csrf_token %}
+                                    <input type="text" name="product" value="{{ product.id }}" hidden>
+                                    <input type="text" name="remove" value="True" hidden>
+                                    <input type="submit" value=" - " class="btn btn-block btn-secondary">
+                                </form>
+                                <div class="text-center col">{{ product|cart_quantity:request.session.cart }} in cart</div>
+                                <form action="#{{product.id}}" class="col-2" method="POST">
+                                    {% csrf_token %}
+                                    <input type="text" name="product" value="{{ product.id }}" hidden>
+                                    <input type="submit" value=" + " class="btn btn-block btn-secondary">
+                                </form>
+                            </div>
+                        {% else %}
+                        
+                            <form action="#{{product.id}}" method="POST" class="btn-block">
+                                {% csrf_token %}
+                                <input type="text" name="product" value="{{ product.id }}" hidden>
+                                <input type="submit" class="float-right btn btn-light btn-block form-control" value="Add To Cart">
+                            </form>
+                        {% endif %}                        
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+   
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+    
+
+
+</body>
+</html>

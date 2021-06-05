@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="checkoutProduct">
+        {% for checkoutInfo in productCheckout %}
+            <div class="left">
+                <img src="{{ checkoutInfo.image.url }}" alt="" class="productImage">
+            </div>
+            <div class="right">
+                <div class="productName">{{ checkoutInfo.name }}</div><br>
+                <div class="productPrice">Price: &#8377;{{ checkoutInfo.price }}</div><br>
+                <div class="stockDetails">{{ checkoutInfo.StockDetails }}</div><br>
+
+                <div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                
+                        <script
+                            src="https://checkout.razorpay.com/v1/checkout.js"
+                            data-key="rzp_test_G1jXAHHxcitb1c"
+                            data-amount="{{ checkoutInfo.price }}00"
+                            data-currency="INR"
+                            data-order_id=""
+                            data-buttontext="Pay with Razorpay"
+                            data-name="Acme Corp"
+                            data-description="A Wild Sheep Chase is the third novel by Japanese author Haruki Murakami"
+                            data-image="https://example.com/your_logo.jpg"
+                            data-prefill.name="Gaurav Kumar"
+                            data-prefill.email="gaurav.kumar@example.com"
+                            data-theme.color="#F37254"
+                        ></script>
+                        <input type="hidden" value="{{ checkoutInfo.price }}" name="totalAmt">
+                        <input type="hidden" custom="Hidden Element" name="hidden">
+                    </form>
+                </div>
+        {% endfor %}
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+

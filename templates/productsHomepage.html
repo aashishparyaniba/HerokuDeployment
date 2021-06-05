@@ -1,82 +1,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/productsHomepage.css' %}">
 
     <!--Swiperjs css-->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 </head>
+
 <body>
-    
+
     {% include "navbar.html" %}
 
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="{{ WomenImage1.Image.url }}" alt="" class="sliderImg0"></div>
-          <div class="swiper-slide"><img src="{{ WomenImage2.Image.url }}" alt="" class="sliderImg1"></div>
-          <div class="swiper-slide"><img src="{{ MenImage0.Image.url }}" alt="" class="sliderImg2"></div>
+
+
+    <div class="productsFlex">
+        {% for laptop in laptops %}
+        <div class="individualProducts">
+            <img src="{{ laptop.image.url }}" alt="" class="images"><br><br>
+            <div class="laptopName">{{ laptop.name }}</div><br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" value="{{laptop.id}}" name="laptop">
+                <button type="submit">checkout</button>
+            </form>
+            
         </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div><br>
-    
-
-    
-    <div class="watchContainer">
-        <img src="{% static 'images/watchProduct.png' %}" alt="" class="watchImg">
-        <div class="productBrand">MP</div>
-        <div class="productName">MP-09</div>
-        <button>SHOP NOW</button>
-    </div><br>
-
-
-    <img src="{% static 'images/model13.png' %}" alt="" class="feetImg">
-    
-
-    
-
-    
-
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        {% endfor %}
+    </div>
 
 
 
-    <!--swiperjs js-->
-
-    <script>
-        var swiper = new Swiper('.swiper-container', {
-          spaceBetween: 30,
-          centeredSlides: true,
-          autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-        });
-    </script>
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 </body>
+
 </html>
-
-
-
-
-
